@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\SweepingBlade.Infrastructure.Domain\SweepingBlade.Infrastructure.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Title>SweepingBlade.Infrastructure.Domain</Title>
+        <Description>
+            This package includes a library with helpers such as:
+            - Entity: a base class for objects that represent a domain entity.
+            - Collection: a base class for collections of entities.
+            - Event: a base class for implementing domain events.
+        </Description>
+        <PackageTags>Clean Architecture;Entity;Domain;DDD;Domain Driven Architecture;Event</PackageTags>
+    </PropertyGroup>
+
+</Project>
