@@ -4,5 +4,17 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
+    
+    <PropertyGroup Condition="$(Configuration) == 'Release'" Label="NuGet">
+        <PackageId>SweepingBlade.Infrastructure.Domain</PackageId>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Authors>SweepingBlade</Authors>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/SweepingBlade/SweepingBlade.CleanArchitecture</PackageProjectUrl>
+        <Description>SweepingBlade is a software library that provides a fundamental structure to support the development of .NET applications.</Description>
+        <PackageTags>Clean Architecture;DDD;Entity;Domain;Event</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
 
 </Project>
