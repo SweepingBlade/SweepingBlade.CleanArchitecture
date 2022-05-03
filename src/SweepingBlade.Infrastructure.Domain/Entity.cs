@@ -5,13 +5,13 @@ namespace SweepingBlade.Infrastructure.Domain;
 
 public abstract class Entity
 {
-    protected void Invoke<TEvent>(TEvent @event)
+    protected virtual void Invoke<TEvent>(TEvent @event)
         where TEvent : IEvent<TEvent>
     {
         EventManager.Current.Invoke(@event);
     }
 
-    protected bool SetProperty<T>(ref T storage, T value, PropertyChangedDelegate<T> action = null, [CallerMemberName] string propertyName = null)
+    protected virtual bool SetProperty<T>(ref T storage, T value, PropertyChangedDelegate<T> action = null, [CallerMemberName] string propertyName = null)
     {
         if (!EqualityComparer<T>.Default.Equals(storage, value))
         {
