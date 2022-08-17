@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using SweepingBlade.Infrastructure.Domain.Subscriptions;
 
 namespace SweepingBlade.Infrastructure.Domain.EventHandling.Registrations
@@ -9,7 +8,6 @@ namespace SweepingBlade.Infrastructure.Domain.EventHandling.Registrations
         bool Contains(SubscriptionToken token);
         void Prune();
         void Unsubscribe(SubscriptionToken token);
-        SynchronizationContext SynchronizationContext { get; }
     }
 
     public interface IEventRegistration<TEvent> : IEventRegistration

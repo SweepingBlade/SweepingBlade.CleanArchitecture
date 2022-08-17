@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using SweepingBlade.Infrastructure.Domain.EventHandling.Registrations;
 using SweepingBlade.Infrastructure.Domain.EventHandling.Resolvers;
 
@@ -11,13 +10,11 @@ namespace SweepingBlade.Infrastructure.Domain
         private readonly Dictionary<Type, IEventRegistration> _events;
         private readonly IPostProcessingEventHandlerResolver _postProcessingEventHandlerResolver;
         private readonly IPreProcessingEventHandlerResolver _preProcessingEventHandlerResolver;
-        private readonly SynchronizationContext _synchronizationContext;
 
-        public EventAggregator(IPreProcessingEventHandlerResolver preProcessingEventHandlerResolver, IPostProcessingEventHandlerResolver postProcessingEventHandlerResolver, SynchronizationContext synchronizationContext)
+        public EventAggregator(IPreProcessingEventHandlerResolver preProcessingEventHandlerResolver, IPostProcessingEventHandlerResolver postProcessingEventHandlerResolver)
         {
             _preProcessingEventHandlerResolver = preProcessingEventHandlerResolver ?? throw new ArgumentNullException(nameof(preProcessingEventHandlerResolver));
             _postProcessingEventHandlerResolver = postProcessingEventHandlerResolver ?? throw new ArgumentNullException(nameof(postProcessingEventHandlerResolver));
-            _synchronizationContext = synchronizationContext ?? throw new ArgumentNullException(nameof(synchronizationContext));
             _events = new Dictionary<Type, IEventRegistration>();
         }
 
@@ -31,7 +28,7 @@ namespace SweepingBlade.Infrastructure.Domain
                     return (IEventRegistration<TEvent>)existingEvent;
                 }
 
-                var eventRegistration = new EventRegistration<TEvent>(_preProcessingEventHandlerResolver, _postProcessingEventHandlerResolver, _synchronizationContext);
+                var eventRegistration = new EventRegistration<TEvent>(_preProcessingEventHandlerResolver, _postProcessingEventHandlerResolver);
                 _events[type] = eventRegistration;
                 return eventRegistration;
             }

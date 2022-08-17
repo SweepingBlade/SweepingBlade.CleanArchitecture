@@ -15,16 +15,13 @@ namespace SweepingBlade.Infrastructure.Domain.EventHandling.Registrations
         private readonly IPreProcessingEventHandlerResolver _preProcessingEventHandlerResolver;
         private readonly List<IEventSubscription<TEvent>> _subscriptions;
 
-        public EventRegistration(IPreProcessingEventHandlerResolver preProcessingEventHandlerResolver, IPostProcessingEventHandlerResolver postProcessingEventHandlerResolver, SynchronizationContext synchronizationContext)
+        public EventRegistration(IPreProcessingEventHandlerResolver preProcessingEventHandlerResolver, IPostProcessingEventHandlerResolver postProcessingEventHandlerResolver)
         {
             _preProcessingEventHandlerResolver = preProcessingEventHandlerResolver ?? throw new ArgumentNullException(nameof(preProcessingEventHandlerResolver));
             _postProcessingEventHandlerResolver = postProcessingEventHandlerResolver ?? throw new ArgumentNullException(nameof(postProcessingEventHandlerResolver));
-            SynchronizationContext = synchronizationContext ?? throw new ArgumentNullException(nameof(synchronizationContext));
 
             _subscriptions = new List<IEventSubscription<TEvent>>();
         }
-
-        public virtual SynchronizationContext SynchronizationContext { get; }
 
         public virtual bool Contains(SubscriptionToken token)
         {
